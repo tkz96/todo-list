@@ -2,22 +2,31 @@
   padding: 0;
   margin: 0;
   font-family: Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
-li { 
-  list-style: none;
+h1 {
+  font-size: 24px;
+}
+
+.todo-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid #000;
 }
 
 button {
   border: none;
   border-radius: 0;
-  padding: 12px
+  padding: 14px;
 }
 
 input {
-  border-bottom: 1px solid red;
-  padding: 12px 0;
-
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 14px 4px;
 }
 
 input::placeholder {
@@ -33,15 +42,22 @@ input::placeholder {
 .list-wrapper {
   display: flex;
   flex-direction: column;
-  box-shadow: 6px 9px 14px -3px rgba(0,0,0,0.63);
+  box-shadow: 0 8px 14px -1px rgba(0, 0, 0, 0.51);
   min-width: 320px;
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid red;
 }
 
 li {
-  margin: 12px 0;
-  border-bottom: 1px solid red;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 4px;
+  border-bottom: 1px solid #000;
+}
+
+.task-text {
+  width: 87%;
 }
