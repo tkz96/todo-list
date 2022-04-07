@@ -1,3 +1,5 @@
+import './style.css';
+
 let tasks = [
   {
     description: "do laundry",
@@ -16,7 +18,7 @@ let tasks = [
   }
 ];
 
-const todoList = document.getElementsByClassName('todo-list')
+const todoList = document.querySelector('.todo-list');
 
 const populateList = () => {
   tasks.forEach((task) => {
