@@ -3,13 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/35e1aa0ca5.js" crossorigin="anonymous"></script>
     <title>To-Do List</title>
   <script defer src="index.bundle.js"></script><script defer src="print.bundle.js"></script></head>
 
   <body>
     <div class="app-wrapper">
       <div class="list-wrapper">
-        <h1 class="title">Today's todo list</h1>
+        <div class="todo-title">
+          <h1>Today's todo list</h1>
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
         <input type="text" class="input" placeholder="Add to your list..." />
         <ul class="todo-list"></ul>
         <button class="btn" type="button">Clear all completed</button>
