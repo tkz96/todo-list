@@ -15,7 +15,7 @@ const populateList = (tasksArray) => {
   for (let i = 0; i < tasksArray.length; i += 1) {
     const li = document.createElement('li');
     //  li.id = `${tasksArray[i].index}`;
-    li.innerHTML = `<input type="checkbox" class="checkbox" data_id='${i}'><div class="task-text" contenteditable="true" data_id='${i}'>${tasksArray[i].description}</div>
+    li.innerHTML = `<input type="checkbox" class="checkbox" data_id='${i}' ${tasksArray[i].completed ? 'checked' : ''}><div class="task-text ${tasksArray[i].completed ? 'line' : ''}" contenteditable="true" data_id='${i}'>${tasksArray[i].description}</div>
         <i class="fas fa-trash-alt delete" data_id='${i}'></i>`;
     todoList.appendChild(li);
   }
@@ -24,8 +24,6 @@ const populateList = (tasksArray) => {
 function clearData() {
   input.value = '';
 }
-
-populateList(tasksArray);
 
 function updateLS(tasksArray) {
   localStorage.setItem('task', JSON.stringify(tasksArray));
@@ -59,15 +57,13 @@ export const editTasks = (e) => {
 export const check = (e) => {
   if (e.target.className.includes('checkbox')) {
     const { checked } = e.target;
-    // tasksArray[e.target.getAttribute('data_id')].completed = true;
     const text = e.target.parentNode.querySelector('.task-text');
     if (checked) {
       text.classList.add('line');
-      tasksArray[e.target.getAttribute('data_id')].completed = true;
     } else {
       text.classList.remove('line');
-      tasksArray[e.target.getAttribute('data_id')].completed = false;
     }
+    tasksArray[e.target.getAttribute('data_id')].completed = checked;
   }
   updateLS(tasksArray);
 };
@@ -77,3 +73,5 @@ export const clear = () => {
   updateLS(tasksArray);
   populateList(tasksArray);
 };
+
+populateList(tasksArray);
