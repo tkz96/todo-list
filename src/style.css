@@ -9,6 +9,14 @@
   display: flex;
 }
 
+.display-none {
+  display: none;
+}
+
+.line {
+  text-decoration: line-through;
+}
+
 .add-new-task {
   justify-content: space-between;
   align-items: center;
