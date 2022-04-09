@@ -1,31 +1,46 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import './style.css';
+import Task from './Task.js';
 
-const tasks = [
-  {
-    description: 'do laundry',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'do dishes',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'eat pizza',
-    completed: false,
-    index: 2,
-  },
-];
+const form = document.querySelector('form');
+const taskObj = new Task();
 
-const todoList = document.querySelector('.todo-list');
-
-const populateList = () => {
-  tasks.forEach((task) => {
-    const li = document.createElement('li');
-    li.innerHTML = `<input type="checkbox"><div class="task-text">${task.description}</div><i class="fas fa-ellipsis-v"></i>`;
-    todoList.appendChild(li);
-  });
+const populateList = (tasks) => {
+  const items = [];
+  for (const task in tasks.entries()) {
+    items.push(`<li><input type="checkbox"><div class="task-text">${task.taskDescription}</div><i class="fas fa-ellipsis-v"></i></li>`);
+  }
+  return items.join('');
 };
 
-populateList();
+const showTasks = () => {
+  const todolistUL = document.getElementById('todo-list');
+  todolistUL.innerHTML = `${populateList(taskObj.tasksInLS)}`;
+
+  // const btns = document.getElementsByClassName('fas fa-ellipsis-v');
+
+  // for (const btn of btns) { //eslint-disable-line
+  //   btn.addEventListener('click', removeTask); //eslint-disable-line
+  // }
+};
+
+const addTask = () => {
+  const taskTitle = document.getElementById('input');
+  taskObj.add(taskTitle.value);
+
+  showTasks();
+};
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  addTask();
+});
+
+// const removeTask = (event) => {
+//   const bookId = event.target.dataset['bookidx'];
+//   taskObj.remove(bookId);
+//   showTasks();
+// }
+
+window.onload = showTasks();
