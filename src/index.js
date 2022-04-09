@@ -1,31 +1,16 @@
 import './style.css';
+// eslint-disable-next-line object-curly-newline
+import { addTask, editTasks, check, clear } from './Task.js';
 
-const tasks = [
-  {
-    description: 'do laundry',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'do dishes',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'eat pizza',
-    completed: false,
-    index: 2,
-  },
-];
+const addBtn = document.getElementById('add-btn');
+const todoListUL = document.querySelector('.todo-list');
+const clearBtn = document.getElementById('clear-btn');
 
-const todoList = document.querySelector('.todo-list');
+window.addEventListener('DOMContentLoaded', () => {
+  addBtn.addEventListener('click', addTask);
 
-const populateList = () => {
-  tasks.forEach((task) => {
-    const li = document.createElement('li');
-    li.innerHTML = `<input type="checkbox"><div class="task-text">${task.description}</div><i class="fas fa-ellipsis-v"></i>`;
-    todoList.appendChild(li);
-  });
-};
+  todoListUL.addEventListener('focusout', (e) => editTasks(e));
+  todoListUL.addEventListener('change', (e) => check(e));
 
-populateList();
+  clearBtn.addEventListener('click', clear);
+});

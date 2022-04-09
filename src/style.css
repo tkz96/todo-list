@@ -5,6 +5,24 @@
   box-sizing: border-box;
 }
 
+.display-flex {
+  display: flex;
+}
+
+.display-none {
+  display: none;
+}
+
+.line {
+  text-decoration: line-through;
+}
+
+.add-new-task {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9px;
+}
+
 h1 {
   font-size: 24px;
 }
