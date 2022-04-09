@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/print.js":
-/*!**********************!*\
-  !*** ./src/print.js ***!
-  \**********************/
+/***/ "./src/Task.js":
+/*!*********************!*\
+  !*** ./src/Task.js ***!
+  \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ printMe)\n/* harmony export */ });\nfunction printMe() {\n  console.log('I get called from print.js!'); // eslint-disable-line\n}\n\n//# sourceURL=webpack://into-to-webpack/./src/print.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nconst taskArray = [];\n\nclass Task {\n  constructor() {\n    if (localStorage.getItem('tasks') === null) {\n      this.tasksInLS = localStorage.setItem('tasks', JSON.stringify([]));\n    } else {\n      this.tasksInLS = JSON.parse(localStorage.getItem('tasks'));\n    }\n  }\n\n  updateLS() {\n    localStorage.setItem('tasks', JSON.stringify(this.tasksInLS));\n  }\n\n  // eslint-disable-next-line class-methods-use-this\n  add(description) {\n    taskArray.push({\n      taskDescription: description,\n      id: taskArray.length + 1,\n      completed: false,\n    });\n\n    this.updateLS();\n  }\n\n  remove(taskIdx) {\n    this.tasksInLS.splice(taskIdx, 1);\n    this.updateLS();\n  }\n}\n\n//# sourceURL=webpack://into-to-webpack/./src/Task.js?");
 
 /***/ })
 
@@ -60,7 +60,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/print.js"](0, __webpack_exports__, __webpack_require__);
+/******/ 	__webpack_modules__["./src/Task.js"](0, __webpack_exports__, __webpack_require__);
 /******/ 	
 /******/ })()
 ;
